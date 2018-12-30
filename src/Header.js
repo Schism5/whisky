@@ -45,20 +45,16 @@ const styles = theme => ({
     },
     search: {
       position: 'relative',
-      float: 'right',
       marginTop: '6px',
       borderRadius: theme.shape.borderRadius,
       backgroundColor: fade(theme.palette.common.white, 0.15),
       '&:hover': {
         backgroundColor: fade(theme.palette.common.white, 0.25),
       },
-      marginRight: '5px',
-      marginLeft: 10,
-      //width: '100%',
       display: 'inline-block',
       [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing.unit * 3,
-        width: 'auto',
+        marginLeft: theme.spacing.unit * 4,
+        width: '300px',
       },
     },
     searchIcon: {
@@ -78,7 +74,7 @@ const styles = theme => ({
       paddingTop: theme.spacing.unit,
       paddingRight: theme.spacing.unit,
       paddingBottom: theme.spacing.unit,
-      paddingLeft: theme.spacing.unit * 10,
+      paddingLeft: theme.spacing.unit * 6,
       transition: theme.transitions.create('width'),
       width: '100%',
       [theme.breakpoints.up('md')]: {
@@ -139,7 +135,7 @@ class Header extends Component {
 
         return (
             <AppBar position='static' style={{display:'inline-block', padding:'5px 8px 5px 8px'}}>
-                <div style={{paddingLeft:'0px', paddingRight:'20px', display:'inline-block'}}>
+                <div style={{paddingLeft:'0px', paddingRight:'10px', display:'inline-block'}}>
                     <IconButton color="inherit" aria-label="Menu" onClick={this.toggleDrawer(true)}>
                         <MenuIcon />
                     </IconButton>
@@ -164,9 +160,9 @@ class Header extends Component {
                     />
                 </div>
 
-                {/* <div style={{float:'right', paddingTop:'12px', paddingRight:'10px', cursor:'pointer'}}>
+                <div style={{float:'right', paddingTop:'12px', paddingRight:'10px', cursor:'pointer'}}>
                     <AddIcon onClick={()=>this.setState({modalOpen:true})}/>
-                </div> */}
+                </div>
 
                 <Dialog open={this.state.modalOpen}>
                     <DialogTitle id="form-dialog-title">Add Email</DialogTitle>
