@@ -101,11 +101,22 @@ class Header extends Component {
         this.state = {
             isOpen: false,
             modalOpen: false,
-            modalText: ''
+            whisky: {
+                displayName: '',
+                distillery: '',
+                bottler: '',
+                bottled: '',
+                distilled: '',
+                age: '',
+                vintage: '',
+                abv: ''
+            }
         };
 
         this.toggleDrawer = this.toggleDrawer.bind(this);
-        this.addEmail = this.addEmail.bind(this);
+        this.saveWhisky = this.saveWhisky.bind(this);
+        this.createRequiredTextfield = this.createRequiredTextfield.bind(this);
+        this.createNormalTextfield = this.createNormalTextfield.bind(this);
     }
 
     render() {
@@ -165,18 +176,16 @@ class Header extends Component {
                 </div>
 
                 <Dialog open={this.state.modalOpen}>
-                    <DialogTitle id="form-dialog-title">Add Email</DialogTitle>
-                    <DialogContent style={{width:'300px'}}>
-                        <TextField
-                            autoFocus
-                            margin="dense"
-                            id="name"
-                            label="Email Address"
-                            type="email"
-                            fullWidth
-                            value={this.state.modalText}
-                            onChange={(e)=>this.setState({modalText: e.target.value})}
-                        />
+                    <DialogTitle id="form-dialog-title">Add Whisky</DialogTitle>
+                    <DialogContent style={{width:'350px'}}>
+                        {this.createRequiredTextfield('Display Name', 'displayName')}
+                        {this.createRequiredTextfield('Distillery', 'distillery')}
+                        {this.createRequiredTextfield('Bottler', 'bottler')}
+                        {this.createRequiredTextfield('Age', 'age')}
+                        {this.createRequiredTextfield('ABV', 'abv')}
+                        {this.createNormalTextfield('Vintage Year', 'vintage')}
+                        {this.createNormalTextfield('Distilled Date', 'distilled')}
+                        {this.createNormalTextfield('Bottled Date', 'bottled')}
                     </DialogContent>
                     <DialogActions>
                         <Button 
@@ -185,7 +194,7 @@ class Header extends Component {
                             Cancel
                         </Button>
                         <Button 
-                            onClick={this.addEmail} 
+                            onClick={this.saveWhisky} 
                             color="primary">
                             Save
                         </Button>
@@ -206,23 +215,57 @@ class Header extends Component {
         );
     }
 
-    addEmail() {
-        console.log(this.state.modalText);
-        const url  = "https://api.mlab.com/api/1/databases/heroku_0lwkfbwj/collections/email?apiKey=aVVSLiUK4fYFdptcpCwQR2sO9QXtZKXs";
+    createRequiredTextfield(label, name) {
+        return <TextField 
+            required 
+            variant="outlined" 
+            margin="dense" 
+            id={label} 
+            label={label} 
+            fullWidth 
+            value={this.state.whisky[name]}
+            onChange={(e)=>this.setState({whisky: Object.assign(this.state.whisky, {[name]: e.target.value})})}
+        />
+    }
 
-        axios.post(url, {address:this.state.modalText}).then(resp => console.log(resp));
-        this.setState({modalOpen: false, modalText: ''});
+    createNormalTextfield(label, name) {
+        return <TextField 
+            variant="outlined" 
+            margin="dense" 
+            id={label} 
+            label={label} 
+            fullWidth 
+            value={this.state.whisky[name]}
+            onChange={(e)=>this.setState({whisky: Object.assign(this.state.whisky, {[name]: e.target.value})})}
+        />
+    }
+
+    saveWhisky() {
+        const url  = "https://api.mlab.com/api/1/databases/heroku_7317r3mx/collections/whisky?apiKey=Tv5b83Wy468fGsgALGC6ZVJfGuB1zLRG";
+
+        axios.post(url, this.state.whisky).then(() => this.props.loadWhisky());
+        this.setState({
+            modalOpen: false, 
+            whisky: {
+                displayName: '',
+                distillery: '',
+                bottler: '',
+                bottled: '',
+                distilled: '',
+                age: '',
+                vintage: '',
+                abv: ''
+            }
+        });
     }
 
     toggleDrawer = open => () => {
-        this.setState({
-          isOpen: open
-        });
-      };
+        this.setState({isOpen: open});
+    };
 }
 
 Header.propTypes = {
     classes: PropTypes.object.isRequired,
-  };
+};
 
 export default withStyles(styles)(Header);
