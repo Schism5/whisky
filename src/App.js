@@ -81,14 +81,14 @@ class App extends Component {
         const me  = this;
         const url = 'https://api.mlab.com/api/1/databases/heroku_7317r3mx/collections/whisky?apiKey=Tv5b83Wy468fGsgALGC6ZVJfGuB1zLRG';
 
-        if(!window.location.host.includes('localhost')) {
-            me.setState({
-                whisky: [...me.state.originalList]
-            });
-        }
-        else {
+        // if(window.location.host.includes('localhost')) {
+        //     me.setState({
+        //         whisky: [...me.state.originalList]
+        //     });
+        // }
+        // else {
             axios.get(url).then(resp => me.setState({whisky: resp.data, originalList: resp.data}));
-        }
+        //}
     }
 
     setWhiskyList(whisky) {
