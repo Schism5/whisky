@@ -17,9 +17,7 @@ class WhiskyItem extends Component {
                         {o.abv + '%'}
                     </Typography>
                     <Typography component="p">
-                        well meaning and kindly.
-                        <br />
-                        {'"a benevolent smile"'}
+
                     </Typography>
                 </CardContent>
             </Card>
