@@ -53,8 +53,8 @@ const styles = theme => ({
       },
       display: 'inline-block',
       [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing.unit * 4,
-        width: '300px',
+        marginLeft: theme.spacing.unit * 2,
+        width: '250px',
       },
     },
     searchIcon: {
@@ -146,7 +146,7 @@ class Header extends Component {
 
         return (
             <AppBar position='static' style={{display:'inline-block', padding:'5px 8px 5px 8px'}}>
-                <div style={{paddingLeft:'0px', paddingRight:'10px', display:'inline-block'}}>
+                <div style={{paddingLeft:'0px', display:'inline-block'}}>
                     <IconButton color="inherit" aria-label="Menu" onClick={this.toggleDrawer(true)}>
                         <MenuIcon />
                     </IconButton>

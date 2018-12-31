@@ -54,10 +54,10 @@ class FilterAndSort extends Component {
                     <FilterListIcon />
                     &nbsp;&nbsp;Filter
                 </Button>
-                <Button variant="contained" size="small" style={{marginLeft:'5px', width:'40px', minWidth:'40px'}}>
+                {/* <Button variant="contained" size="small" style={{marginLeft:'5px', width:'40px', minWidth:'40px'}}>
                     <ClearIcon />
-                </Button>
-                <FormControl style={{marginLeft:'50px', verticalAlign:'inherit', width:'200px'}}>
+                </Button> */}
+                <FormControl style={{marginLeft:'20px', verticalAlign:'inherit', width:'200px'}}>
                     <InputLabel htmlFor="age-native-simple">Sort By</InputLabel>
                     <Select
                         native
@@ -90,9 +90,9 @@ class FilterAndSort extends Component {
                         <option value={12}>Bottler Decending</option>
                     </Select>
                 </FormControl>
-                <Button size="small" style={{marginLeft:'5px', width:'40px', minWidth:'40px'}}>
+                {/* <Button size="small" style={{marginLeft:'5px', width:'40px', minWidth:'40px'}}>
                     <ClearIcon />
-                </Button>
+                </Button> */}
             </div>
         );
     }
