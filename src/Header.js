@@ -158,7 +158,7 @@ class Header extends Component {
                     Whisky
                 </Typography>
 
-                <div className={classes.search}>
+                {/* <div className={classes.search}>
                     <div className={classes.searchIcon}>
                         <SearchIcon />
                     </div>
@@ -169,7 +169,7 @@ class Header extends Component {
                         input: classes.inputInput,
                         }}
                     />
-                </div>
+                </div> */}
 
                 <div style={{float:'right', paddingTop:'12px', paddingRight:'10px', cursor:'pointer'}}>
                     <AddIcon onClick={()=>this.setState({modalOpen:true})}/>
