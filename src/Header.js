@@ -175,9 +175,9 @@ class Header extends Component {
                     <AddIcon onClick={()=>this.setState({modalOpen:true})}/>
                 </div>
 
-                <Dialog open={this.state.modalOpen}>
+                <Dialog open={this.state.modalOpen} fullWidth={true}>
                     <DialogTitle id="form-dialog-title">Add Whisky</DialogTitle>
-                    <DialogContent style={{width:'350px'}}>
+                    <DialogContent>
                         {this.createRequiredTextfield('Display Name', 'displayName')}
                         {this.createRequiredTextfield('Distillery', 'distillery')}
                         {this.createRequiredTextfield('Bottler', 'bottler')}
